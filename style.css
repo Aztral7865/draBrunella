@@ -67,7 +67,7 @@ h2 {
 
 /* --- Header & Navigation --- */
 header {
-    background: transparent;
+    background: white;
     box-shadow: none;
 
     position: fixed;
@@ -75,11 +75,6 @@ header {
     top: 0;
     z-index: 1000;
     transition: background-color 0.4s ease, box-shadow 0.4s ease;
-}
-
-header.scrolled {
-    background-color: var(--white);
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
 }
 
 nav {
@@ -630,3 +625,4 @@ footer {
         /* Espaçamento entre a foto e o texto */
     }
 }
+
