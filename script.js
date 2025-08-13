@@ -14,19 +14,6 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     });
 
-    // --- ANIMAÇÃO DO HEADER AO ROLAR (LÓGICA CORRIGIDA) ---
-    const header = document.querySelector('header');
-    window.addEventListener('scroll', () => {
-        // Se a rolagem for maior que 50 pixels
-        if (window.scrollY > 50) {
-            // Adiciona a classe que deixa o fundo branco e com sombra
-            header.classList.add('scrolled');
-        } else {
-            // Remove a classe, fazendo o fundo voltar a ser transparente
-            header.classList.remove('scrolled');
-        }
-    });
-
     // --- EFEITO DE FADE-IN NAS SEÇÕES ---
     const fadeElems = document.querySelectorAll('.fade-in');
     const appearOptions = {
@@ -59,3 +46,4 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 
 });
+
