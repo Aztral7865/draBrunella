@@ -1,13 +1,27 @@
 document.addEventListener("DOMContentLoaded", function () {
 
-    // Efeito de fade-in para as seções ao rolar a página
+    // --- LÓGICA DO MENU HAMBÚRGUER ---
+    const hamburgerBtn = document.getElementById('hamburger-btn');
+    const mobileMenu = document.getElementById('mobile-menu');
+
+    hamburgerBtn.addEventListener('click', () => {
+        mobileMenu.classList.toggle('open');
+    });
+
+    // Fecha o menu se um link for clicado (opcional, mas bom para UX)
+    mobileMenu.addEventListener('click', (e) => {
+        if (e.target.tagName === 'A') {
+            mobileMenu.classList.remove('open');
+        }
+    });
+
+
+    // --- EFEITO DE FADE-IN NAS SEÇÕES ---
     const fadeElems = document.querySelectorAll('.fade-in');
-
     const appearOptions = {
-        threshold: 0,
-        rootMargin: "0px 0px -100px 0px"
+        threshold: 0.1, // Começa a animação quando 10% do elemento está visível
+        rootMargin: "0px 0px -50px 0px"
     };
-
     const appearOnScroll = new IntersectionObserver(function (entries, appearOnScroll) {
         entries.forEach(entry => {
             if (!entry.isIntersecting) {
@@ -23,7 +37,7 @@ document.addEventListener("DOMContentLoaded", function () {
         appearOnScroll.observe(elem);
     });
 
-    // Animação do fundo do header ao rolar
+    // --- ANIMAÇÃO DO HEADER AO ROLAR ---
     const header = document.querySelector('header');
     window.addEventListener('scroll', () => {
         if (window.scrollY > 50) {
@@ -35,12 +49,11 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     });
 
-    // Clique nos cards de vídeo para redirecionar ao YouTube
+    // --- CLIQUE NOS VÍDEOS PARA REDIRECIONAR ---
     document.querySelectorAll('.video-card').forEach(card => {
         card.addEventListener('click', () => {
             const youtubeUrl = card.dataset.youtubeUrl;
             if (youtubeUrl) {
-                // Abre o link do vídeo em uma nova aba
                 window.open(youtubeUrl, '_blank');
             }
         });
