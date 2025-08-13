@@ -38,6 +38,8 @@ body {
     background-color: var(--white);
     color: var(--primary-gray);
     line-height: 1.6;
+    /* MUDANÇA: Define um tamanho de fonte base para o corpo do texto */
+    font-size: clamp(1rem, 1.6vw, 1.1rem);
 }
 
 .container {
@@ -57,13 +59,24 @@ h3 {
     color: var(--secondary-blue);
     margin-bottom: 1rem;
     letter-spacing: 1.5px;
+    line-height: 1.2;
+    /* Garante um bom espaçamento entre linhas dos títulos */
+}
+
+/* MUDANÇA: Usando clamp() para fontes responsivas e acessíveis */
+h1 {
+    font-size: clamp(2.5rem, 8vw, 4rem);
 }
 
 h2 {
-    text-align: center;
-    font-size: 2.5rem;
+    font-size: clamp(2rem, 7vw, 3rem);
     margin-bottom: 3rem;
 }
+
+h3 {
+    font-size: clamp(1.3rem, 5vw, 1.6rem);
+}
+
 
 /* --- Header & Navigation --- */
 header {
@@ -99,7 +112,7 @@ nav {
 .logo-container .doctor-name {
     font-family: var(--font-gobold);
     color: var(--secondary-blue);
-    font-size: 1.5rem;
+    font-size: clamp(1.3rem, 4vw, 1.5rem);
     letter-spacing: 0.5px;
     transition: color 0.3s ease;
 }
@@ -185,19 +198,17 @@ nav {
     padding: 2rem;
 }
 
-/* MUDANÇA: Animação removida para carregamento instantâneo */
 #inicio .text-content {
     flex-basis: 50%;
 }
 
+/* MUDANÇA: A tag H1 agora é estilizada globalmente com clamp() */
 #inicio .text-content h1 {
-    font-size: 3.5rem;
-    line-height: 1.2;
     color: var(--secondary-blue);
 }
 
 #inicio .text-content p {
-    font-size: 1.2rem;
+    font-size: clamp(1rem, 2vw, 1.2rem);
     margin: 1.5rem 0;
 }
 
@@ -210,6 +221,7 @@ nav {
     text-decoration: none;
     font-weight: bold;
     transition: background-color 0.3s ease, transform 0.3s ease;
+    font-size: clamp(0.9rem, 1.8vw, 1rem);
 }
 
 .cta-button:hover {
@@ -217,7 +229,6 @@ nav {
     transform: translateY(-3px);
 }
 
-/* MUDANÇA: Animação removida para carregamento instantâneo */
 #inicio .image-content {
     flex-basis: 45%;
 }
@@ -284,16 +295,12 @@ nav {
     margin-bottom: 1rem;
 }
 
-.service-card h3 {
-    font-size: 1.5rem;
-}
-
 /* --- Formação Section --- */
 #formacao .experience-text {
     max-width: 800px;
     margin: 0 auto;
     text-align: center;
-    font-size: 1.1rem;
+    font-size: clamp(1rem, 1.8vw, 1.1rem);
     line-height: 1.8;
 }
 
@@ -358,6 +365,7 @@ nav {
     text-align: center;
     font-weight: bold;
     color: var(--primary-gray);
+    font-size: clamp(0.9rem, 1.8vw, 1rem);
 }
 
 /* --- Contato Section --- */
@@ -366,12 +374,6 @@ nav {
     grid-template-columns: 1fr 1fr;
     gap: 3rem;
     align-items: flex-start;
-}
-
-.contact-info h3 {
-    font-size: 1.8rem;
-    color: var(--secondary-blue);
-    margin-bottom: 2rem;
 }
 
 .contact-info .contact-item {
@@ -400,7 +402,7 @@ nav {
 
 .contact-info .horarios {
     margin-top: 2rem;
-    font-size: 1.2rem;
+    font-size: clamp(1.1rem, 2.2vw, 1.2rem);
     color: var(--secondary-blue);
     padding-left: 0.8rem;
 }
@@ -452,31 +454,6 @@ footer {
 .fade-in.visible {
     opacity: 1;
     transform: translateY(0);
-}
-
-/* MUDANÇA: As animações slideIn não são mais usadas, mas podem ser mantidas para uso futuro */
-@keyframes slideInLeft {
-    from {
-        opacity: 0;
-        transform: translateX(-100px);
-    }
-
-    to {
-        opacity: 1;
-        transform: translateX(0);
-    }
-}
-
-@keyframes slideInRight {
-    from {
-        opacity: 0;
-        transform: translateX(100px);
-    }
-
-    to {
-        opacity: 1;
-        transform: translateX(0);
-    }
 }
 
 /* --- Responsive Design --- */
@@ -558,11 +535,6 @@ footer {
 
     #inicio .text-content h1 {
         color: var(--white);
-        font-size: 2.8rem;
-    }
-
-    #inicio .text-content p {
-        font-size: 1.1rem;
     }
 
     #sobre .container {
