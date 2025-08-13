@@ -37,6 +37,7 @@ body {
     background-color: var(--white);
     color: var(--primary-gray);
     line-height: 1.6;
+    overflow-x: hidden;
 }
 
 .container {
@@ -66,13 +67,19 @@ h2 {
 
 /* --- Header & Navigation --- */
 header {
-    background: var(--white);
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    background: transparent;
+    box-shadow: none;
+
     position: fixed;
     width: 100%;
     top: 0;
     z-index: 1000;
-    transition: all 0.3s ease;
+    transition: background-color 0.4s ease, box-shadow 0.4s ease;
+}
+
+header.scrolled {
+    background-color: var(--white);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
 }
 
 nav {
