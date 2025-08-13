@@ -6,7 +6,9 @@ document.addEventListener("DOMContentLoaded", function() {
 
     // Função de Scroll Suave Personalizada
     function smoothScrollTo(targetElement, duration) {
-        const targetPosition = targetElement.getBoundingClientRect().top + window.pageYOffset;
+        // Posição do header para calcular o offset
+        const headerOffset = document.querySelector('header').offsetHeight;
+        const targetPosition = targetElement.getBoundingClientRect().top + window.pageYOffset - headerOffset;
         const startPosition = window.pageYOffset;
         const distance = targetPosition - startPosition;
         let startTime = null;
@@ -37,18 +39,29 @@ document.addEventListener("DOMContentLoaded", function() {
     mobileMenu.addEventListener('click', (e) => {
         if (e.target.tagName === 'A') {
             e.preventDefault();
-
             const href = e.target.getAttribute('href');
             const targetElement = document.querySelector(href);
-
             if (targetElement) {
                 smoothScrollTo(targetElement, 700);
             }
-
             mobileMenu.classList.remove('open');
         }
     });
 
+    // NOVO: Adiciona scroll suave para os links da navegação no DESKTOP
+    document.querySelectorAll('.desktop-nav a').forEach(link => {
+        link.addEventListener('click', function(e) {
+            e.preventDefault(); // Previne o salto padrão
+
+            const href = this.getAttribute('href');
+            const targetElement = document.querySelector(href);
+
+            if (targetElement) {
+                // Reutiliza a mesma função de scroll suave
+                smoothScrollTo(targetElement, 700);
+            }
+        });
+    });
 
     // --- EFEITO DE FADE-IN NAS SEÇÕES ---
     const fadeElems = document.querySelectorAll('.fade-in');
@@ -81,18 +94,15 @@ document.addEventListener("DOMContentLoaded", function() {
         });
     });
 
-    // NOVO: SCROLL SUAVE PARA O BOTÃO "AGENDE SUA CONSULTA"
+    // SCROLL SUAVE PARA O BOTÃO "AGENDE SUA CONSULTA"
     const ctaButton = document.getElementById('cta-button-hero');
 
     if (ctaButton) {
         ctaButton.addEventListener('click', function(e) {
-            e.preventDefault(); // Previne o salto padrão do navegador
-
+            e.preventDefault();
             const href = this.getAttribute('href');
             const targetElement = document.querySelector(href);
-
             if (targetElement) {
-                // Reutiliza a mesma função de scroll suave
                 smoothScrollTo(targetElement, 700);
             }
         });
