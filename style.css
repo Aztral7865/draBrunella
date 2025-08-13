@@ -28,8 +28,10 @@
     box-sizing: border-box;
 }
 
-html {
-    scroll-behavior: smooth;
+/* CORREÇÃO: Trava a rolagem horizontal */
+html,
+body {
+    overflow-x: hidden;
 }
 
 body {
@@ -37,7 +39,6 @@ body {
     background-color: var(--white);
     color: var(--primary-gray);
     line-height: 1.6;
-    overflow-x: hidden;
 }
 
 .container {
@@ -66,15 +67,14 @@ h2 {
 }
 
 /* --- Header & Navigation --- */
+/* CORREÇÃO: Fundo do header permanentemente branco */
 header {
-    background: white;
-    box-shadow: none;
-
+    background: var(--white);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
     position: fixed;
     width: 100%;
     top: 0;
     z-index: 1000;
-    transition: background-color 0.4s ease, box-shadow 0.4s ease;
 }
 
 nav {
@@ -145,7 +145,6 @@ nav {
 
 .hamburger-btn {
     display: none;
-    /* Escondido no desktop */
     flex-direction: column;
     justify-content: space-around;
     width: 30px;
@@ -167,10 +166,9 @@ nav {
 
 .mobile-menu {
     display: none;
-    /* Escondido por padrão */
 }
 
-/* --- Início (Banner) Section --- */
+/* O restante do CSS permanece igual... */
 #inicio {
     padding-top: 100px;
     min-height: 90vh;
@@ -232,7 +230,6 @@ nav {
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
 }
 
-/* --- Sobre Mim Section --- */
 #sobre .container {
     display: flex;
     align-items: center;
@@ -257,7 +254,6 @@ nav {
     text-align: left;
 }
 
-/* --- Serviços Section --- */
 #servicos {
     background-color: var(--light-gray);
 }
@@ -292,7 +288,6 @@ nav {
     font-size: 1.5rem;
 }
 
-/* --- Formação Section --- */
 #formacao .experience-text {
     max-width: 800px;
     margin: 0 auto;
@@ -317,7 +312,6 @@ nav {
     text-decoration: underline;
 }
 
-/* --- Entrevistas Section --- */
 #entrevistas {
     background-color: var(--light-gray);
 }
@@ -364,7 +358,6 @@ nav {
     color: var(--primary-gray);
 }
 
-/* --- Contato Section --- */
 .contact-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -419,7 +412,6 @@ nav {
     min-height: 400px;
 }
 
-/* --- Footer --- */
 footer {
     background-color: var(--dark-bg);
     color: var(--white);
@@ -446,7 +438,6 @@ footer {
     color: var(--primary-blue);
 }
 
-/* --- Animations & Keyframes --- */
 .fade-in {
     opacity: 0;
     transform: translateY(20px);
@@ -482,21 +473,17 @@ footer {
     }
 }
 
-/* --- Responsive Design --- */
 @media (max-width: 768px) {
-    h2 {
-        font-size: 2rem;
+    .contact-info h3 {
+        text-align: center;
     }
 
-    /* === NAV MOBILE === */
     .desktop-nav {
         display: none;
-        /* Esconde a navegação de desktop */
     }
 
     .hamburger-btn {
         display: flex;
-        /* Mostra o botão hambúrguer */
     }
 
     .mobile-menu {
@@ -507,7 +494,6 @@ footer {
         background-color: var(--white);
         position: absolute;
         top: 85px;
-        /* Altura do header */
         left: 0;
         padding: 1rem 0;
         box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
@@ -534,7 +520,6 @@ footer {
         color: var(--primary-blue);
     }
 
-    /* === HERO SECTION MOBILE === */
     #inicio {
         background-image: linear-gradient(rgba(20, 68, 135, 0.7), rgba(9, 107, 173, 0.5)), url('images/pupo2.jpg');
         background-size: cover;
@@ -545,7 +530,6 @@ footer {
 
     #inicio .image-content {
         display: none;
-        /* Esconde a <img> no mobile */
     }
 
     #inicio .banner-content {
@@ -554,7 +538,6 @@ footer {
         justify-content: center;
         height: 100%;
         padding-top: 85px;
-        /* Espaço para o header */
     }
 
     #inicio .text-content {
@@ -571,14 +554,28 @@ footer {
         font-size: 1.1rem;
     }
 
-    /* === OUTROS AJUSTES MOBILE === */
     #sobre .container {
         flex-direction: column;
-        text-align: center;
+        align-items: center;
     }
 
-    .about-text h2 {
-        text-align: center;
+    #sobre .about-image {
+        flex-basis: auto;
+        width: 180px;
+        height: 180px;
+    }
+
+    #sobre .about-image img {
+        border-radius: 50%;
+        height: 100%;
+        width: 100%;
+        object-fit: cover;
+        border: 5px solid var(--white);
+        box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+    }
+
+    #sobre .about-text {
+        margin-top: 2rem;
     }
 
     .contact-grid {
@@ -590,39 +587,7 @@ footer {
         gap: 1rem;
     }
 
-    /* Centraliza o título "Agende sua consulta" no mobile */
-    .contact-info h3 {
+    #sobre .about-text h2 {
         text-align: center;
     }
-
-    /* --- Estilos para a Seção Sobre Mim no Mobile (Opção 2) --- */
-    #sobre .container {
-        flex-direction: column;
-        align-items: center;
-        /* Centraliza os itens */
-    }
-
-    #sobre .about-image {
-        flex-basis: auto;
-        width: 180px;
-        /* Tamanho do círculo */
-        height: 180px;
-    }
-
-    #sobre .about-image img {
-        border-radius: 50%;
-        /* Transforma a imagem em um círculo */
-        height: 100%;
-        width: 100%;
-        object-fit: cover;
-        /* Garante que a imagem não se distorça */
-        border: 5px solid var(--white);
-        box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
-    }
-
-    #sobre .about-text {
-        margin-top: 2rem;
-        /* Espaçamento entre a foto e o texto */
-    }
 }
-
