@@ -8,18 +8,29 @@ document.addEventListener("DOMContentLoaded", function () {
         mobileMenu.classList.toggle('open');
     });
 
-    // Fecha o menu se um link for clicado (opcional, mas bom para UX)
     mobileMenu.addEventListener('click', (e) => {
         if (e.target.tagName === 'A') {
             mobileMenu.classList.remove('open');
         }
     });
 
+    // --- ANIMAÇÃO DO HEADER AO ROLAR (LÓGICA CORRIGIDA) ---
+    const header = document.querySelector('header');
+    window.addEventListener('scroll', () => {
+        // Se a rolagem for maior que 50 pixels
+        if (window.scrollY > 50) {
+            // Adiciona a classe que deixa o fundo branco e com sombra
+            header.classList.add('scrolled');
+        } else {
+            // Remove a classe, fazendo o fundo voltar a ser transparente
+            header.classList.remove('scrolled');
+        }
+    });
 
     // --- EFEITO DE FADE-IN NAS SEÇÕES ---
     const fadeElems = document.querySelectorAll('.fade-in');
     const appearOptions = {
-        threshold: 0.1, // Começa a animação quando 10% do elemento está visível
+        threshold: 0.1,
         rootMargin: "0px 0px -50px 0px"
     };
     const appearOnScroll = new IntersectionObserver(function (entries, appearOnScroll) {
@@ -35,18 +46,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
     fadeElems.forEach(elem => {
         appearOnScroll.observe(elem);
-    });
-
-    // --- ANIMAÇÃO DO HEADER AO ROLAR ---
-    const header = document.querySelector('header');
-    window.addEventListener('scroll', () => {
-        if (window.scrollY > 50) {
-            header.style.backgroundColor = 'rgba(255, 255, 255, 0.95)';
-            header.style.backdropFilter = 'blur(10px)';
-        } else {
-            header.style.backgroundColor = 'var(--white)';
-            header.style.backdropFilter = 'none';
-        }
     });
 
     // --- CLIQUE NOS VÍDEOS PARA REDIRECIONAR ---
