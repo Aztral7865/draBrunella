@@ -1,30 +1,51 @@
 document.addEventListener("DOMContentLoaded", function() {
 
-    // --- LÓGICA DO MENU HAMBÚRGUER ---
+    // --- LÓGICA DO MENU HAMBÚRGUER COM SCROLL SUAVE MANUAL ---
     const hamburgerBtn = document.getElementById('hamburger-btn');
     const mobileMenu = document.getElementById('mobile-menu');
+
+    // Função de Scroll Suave Personalizada
+    function smoothScrollTo(targetElement, duration) {
+        const targetPosition = targetElement.getBoundingClientRect().top + window.pageYOffset;
+        const startPosition = window.pageYOffset;
+        const distance = targetPosition - startPosition;
+        let startTime = null;
+
+        function animation(currentTime) {
+            if (startTime === null) startTime = currentTime;
+            const timeElapsed = currentTime - startTime;
+            const run = ease(timeElapsed, startPosition, distance, duration);
+            window.scrollTo(0, run);
+            if (timeElapsed < duration) requestAnimationFrame(animation);
+        }
+
+        // Efeito de aceleração/desaceleração para um movimento mais natural
+        function ease(t, b, c, d) {
+            t /= d / 2;
+            if (t < 1) return c / 2 * t * t + b;
+            t--;
+            return -c / 2 * (t * (t - 2) - 1) + b;
+        }
+
+        requestAnimationFrame(animation);
+    }
 
     hamburgerBtn.addEventListener('click', () => {
         mobileMenu.classList.toggle('open');
     });
 
-    // CORREÇÃO: Lógica de clique nos links do menu mobile com SCROLL SUAVE
     mobileMenu.addEventListener('click', (e) => {
-        // Garante que o alvo do clique é um link <a>
         if (e.target.tagName === 'A') {
-            e.preventDefault(); // Previne o "salto" padrão do navegador
+            e.preventDefault();
 
-            const href = e.target.getAttribute('href'); // Pega o destino (ex: "#sobre")
-            const targetElement = document.querySelector(href); // Encontra a seção de destino
+            const href = e.target.getAttribute('href');
+            const targetElement = document.querySelector(href);
 
-            // Se o elemento de destino existir, rola suavemente até ele
             if (targetElement) {
-                targetElement.scrollIntoView({
-                    behavior: 'smooth'
-                });
+                // Chama a nova função de scroll suave com duração de 700ms
+                smoothScrollTo(targetElement, 700);
             }
 
-            // Fecha o menu após o clique
             mobileMenu.classList.remove('open');
         }
     });
