@@ -71,12 +71,12 @@ h1 {
 h2 {
     font-size: clamp(2rem, 7vw, 3rem);
     margin-bottom: 3rem;
+    text-align: center; 
 }
 
 h3 {
     font-size: clamp(1.3rem, 5vw, 1.6rem);
 }
-
 
 /* --- Header & Navigation --- */
 header {
@@ -570,3 +570,4 @@ footer {
         gap: 1rem;
     }
 }
+
