@@ -1,4 +1,4 @@
-document.addEventListener("DOMContentLoaded", function () {
+document.addEventListener("DOMContentLoaded", function() {
 
     // --- LÓGICA DO MENU HAMBÚRGUER ---
     const hamburgerBtn = document.getElementById('hamburger-btn');
@@ -8,12 +8,27 @@ document.addEventListener("DOMContentLoaded", function () {
         mobileMenu.classList.toggle('open');
     });
 
-    // Fecha o menu se um link for clicado (opcional, mas bom para UX)
+    // CORREÇÃO: Lógica de clique nos links do menu mobile com SCROLL SUAVE
     mobileMenu.addEventListener('click', (e) => {
+        // Garante que o alvo do clique é um link <a>
         if (e.target.tagName === 'A') {
+            e.preventDefault(); // Previne o "salto" padrão do navegador
+
+            const href = e.target.getAttribute('href'); // Pega o destino (ex: "#sobre")
+            const targetElement = document.querySelector(href); // Encontra a seção de destino
+
+            // Se o elemento de destino existir, rola suavemente até ele
+            if (targetElement) {
+                targetElement.scrollIntoView({
+                    behavior: 'smooth'
+                });
+            }
+
+            // Fecha o menu após o clique
             mobileMenu.classList.remove('open');
         }
     });
+
 
     // --- EFEITO DE FADE-IN NAS SEÇÕES ---
     const fadeElems = document.querySelectorAll('.fade-in');
@@ -21,7 +36,7 @@ document.addEventListener("DOMContentLoaded", function () {
         threshold: 0.1,
         rootMargin: "0px 0px -50px 0px"
     };
-    const appearOnScroll = new IntersectionObserver(function (entries, appearOnScroll) {
+    const appearOnScroll = new IntersectionObserver(function(entries, appearOnScroll) {
         entries.forEach(entry => {
             if (!entry.isIntersecting) {
                 return;
