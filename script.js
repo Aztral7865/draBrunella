@@ -42,7 +42,6 @@ document.addEventListener("DOMContentLoaded", function() {
             const targetElement = document.querySelector(href);
 
             if (targetElement) {
-                // Chama a nova função de scroll suave com duração de 700ms
                 smoothScrollTo(targetElement, 700);
             }
 
@@ -81,5 +80,22 @@ document.addEventListener("DOMContentLoaded", function() {
             }
         });
     });
+
+    // NOVO: SCROLL SUAVE PARA O BOTÃO "AGENDE SUA CONSULTA"
+    const ctaButton = document.getElementById('cta-button-hero');
+
+    if (ctaButton) {
+        ctaButton.addEventListener('click', function(e) {
+            e.preventDefault(); // Previne o salto padrão do navegador
+
+            const href = this.getAttribute('href');
+            const targetElement = document.querySelector(href);
+
+            if (targetElement) {
+                // Reutiliza a mesma função de scroll suave
+                smoothScrollTo(targetElement, 700);
+            }
+        });
+    }
 
 });
