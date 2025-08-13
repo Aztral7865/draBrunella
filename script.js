@@ -8,6 +8,7 @@ document.addEventListener("DOMContentLoaded", function () {
         mobileMenu.classList.toggle('open');
     });
 
+    // Fecha o menu se um link for clicado (opcional, mas bom para UX)
     mobileMenu.addEventListener('click', (e) => {
         if (e.target.tagName === 'A') {
             mobileMenu.classList.remove('open');
@@ -46,4 +47,3 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 
 });
-
