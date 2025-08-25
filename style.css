@@ -269,8 +269,8 @@ nav {
 
 .services-grid {
     display: flex;
-    flex-wrap: wrap;
     justify-content: center;
+    flex-wrap: wrap;
     gap: 2rem;
 }
 
@@ -281,7 +281,7 @@ nav {
     text-align: center;
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
-    flex: 0 1 320px; 
+    width: 300px;
 }
 
 .service-card:hover {
@@ -578,6 +578,7 @@ footer {
         gap: 1rem;
     }
 }
+
 
 
 
