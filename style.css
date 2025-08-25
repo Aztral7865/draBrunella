@@ -7,6 +7,7 @@
         url('https://db.onlinewebfonts.com/t/1709e7e59b1883760a006f85e373a463.woff') format('woff'),
         url('https://db.onlinewebfonts.com/t/1709e7e59b1883760a006f85e373a463.ttf') format('truetype'),
         url('https://db.onlinewebfonts.com/t/1709e7e59b1883760a006f85e373a463.svg#GOBOLD') format('svg');
+    font-display: swap; 
 }
 
 /* --- Global Styles & Variables --- */
@@ -575,3 +576,4 @@ footer {
         gap: 1rem;
     }
 }
+
