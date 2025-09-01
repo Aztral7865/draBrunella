@@ -94,7 +94,7 @@ document.addEventListener("DOMContentLoaded", function() {
         });
     });
 
-    // SCROLL SUAVE PARA O BOTÃO "AGENDE SUA CONSULTA"
+    /* SCROLL SUAVE PARA O BOTÃO "AGENDE SUA CONSULTA"
     const ctaButton = document.getElementById('cta-button-hero');
 
     if (ctaButton) {
@@ -109,3 +109,5 @@ document.addEventListener("DOMContentLoaded", function() {
     }
 
 });
+*/ 
+
